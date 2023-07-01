@@ -51,6 +51,12 @@ function getMessage(e: ValidationError): string {
       );
 }
 
+function getEmptyErrorMessage(path: string, value: any, expectedType: string) {
+  return `Empty value ${stringify(
+    value
+  )} for ${path} - Expected a non-empty value of type ${expectedType}.`;
+}
+
 function getErrorMessage(path: string, value: any, expectedType: string) {
   return `Invalid value ${stringify(
     value
@@ -139,6 +145,14 @@ function isDecimalString(v: unknown): v is string {
   }
 
   return v.match(DEC_STRING_REGEX) !== null;
+}
+
+function isEmptyString(v: unknown): v is string {
+  if (typeof v !== "string") {
+    return false;
+  }
+
+  return v.trim().length === 0;
 }
 
 export const hexString = new t.Type<string>(
@@ -504,6 +518,14 @@ export function getValidationErrors(config: any): string[] {
         if (typeof netConfig.url !== "string") {
           errors.push(
             getErrorMessage(
+              `HardhatConfig.networks.${networkName}.url`,
+              netConfig.url,
+              "string"
+            )
+          );
+        } else if (isEmptyString(netConfig.url)) {
+          errors.push(
+            getEmptyErrorMessage(
               `HardhatConfig.networks.${networkName}.url`,
               netConfig.url,
               "string"
