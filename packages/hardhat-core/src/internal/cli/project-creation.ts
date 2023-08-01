@@ -64,7 +64,7 @@ const TYPESCRIPT_DEPENDENCIES: Dependencies = {};
 const TYPESCRIPT_PEER_DEPENDENCIES: Dependencies = {
   "@types/chai": "^4.2.0",
   "@types/mocha": ">=9.1.0",
-  "@types/node": ">=12.0.0",
+  "@types/node": ">=16.0.0",
   "ts-node": ">=8.0.0",
   typescript: ">=4.5.0",
 };
@@ -227,7 +227,7 @@ async function printRecommendedDepsInstallationInstructions(
 // exported so we can test that it uses the latest supported version of solidity
 export const EMPTY_HARDHAT_CONFIG = `/** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.20",
+  solidity: "0.8.19",
 };
 `;
 
@@ -297,7 +297,7 @@ async function getAction(isEsm: boolean): Promise<Action> {
       return Action.QUIT_ACTION;
     }
 
-    // eslint-disable-next-line @nomiclabs/hardhat-internal-rules/only-hardhat-error
+    // eslint-disable-next-line @nomicfoundation/hardhat-internal-rules/only-hardhat-error
     throw e;
   }
 }
@@ -392,7 +392,7 @@ export async function createProject() {
         return;
       }
 
-      // eslint-disable-next-line @nomiclabs/hardhat-internal-rules/only-hardhat-error
+      // eslint-disable-next-line @nomicfoundation/hardhat-internal-rules/only-hardhat-error
       throw e;
     }
   }
