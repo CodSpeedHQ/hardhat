@@ -782,6 +782,39 @@ const communityPlugins: IPlugin[] = [
       "The hardhat-w3f plugin allows builders to build & run Web3 Functions connecting smart off-chain data with smart contracts ",
     tags: ["Gelato", "w3f", "offchain", "functions"],
   },
+  {
+    name: "hardhat-publish-typechain",
+    author: "xiaosongfu",
+    npmPackage: "hardhat-publish-typechain",
+    authorUrl: "https://github.com/xiaosongfu",
+    description: "Publish generated typechain-types to NPM",
+    tags: ["typechain-types", "npm registry"],
+  },
+  {
+    name: "hardhat-deployed-records",
+    author: "xiaosongfu",
+    npmPackage: "hardhat-deployed-records",
+    authorUrl: "https://github.com/xiaosongfu",
+    description: "Recording deployed contracts address to json file",
+    tags: ["deployed history"],
+  },
+  {
+    name: "hardhat-generate-function-selectors",
+    author: "3obby",
+    npmPackage: "hardhat-generate-function-selectors",
+    authorUrl: "https://github.com/3obby/function-selectors-plugin",
+    description:
+      "generate an output file of organized function selectors for all ABI/.json files within ./artifacts/contracts",
+    tags: ["function", "selectors", "tooling", "router"],
+  },
+  {
+    name: "hardhat-gasless-deployer",
+    author: "Ahmed Ali",
+    authorUrl: "https://twitter.com/0xAhmedAli",
+    npmPackage: "https://www.npmjs.com/package/hardhat-gasless-deployer",
+    description: "Deploy contracts with Hardhat using Gas Station Network",
+    tags: ["GSN", "Gasless", "Deployment"],
+  },
 ];
 
 const officialPlugins: IPlugin[] = [
