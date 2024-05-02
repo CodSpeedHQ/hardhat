@@ -156,10 +156,10 @@ pub mod permutations {
 
 #[cfg(not(feature = "bench-once"))]
 pub mod permutations {
-    pub const ACCOUNT_SCALES: [u64; 4] = [10, 100, 1000, 10000];
+  pub const ACCOUNT_SCALES: [u64; 2] = [10, 100];
 
-    #[allow(dead_code)]
-    pub const STORAGE_SCALES: [u64; 4] = [1, 10, 100, 1000];
+  #[allow(dead_code)]
+  pub const STORAGE_SCALES: [u64; 2] = [1, 10];
 }
 
 #[allow(dead_code)]
