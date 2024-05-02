@@ -1,0 +1,5 @@
+{
+  "node-option": ["loader=tsx"],
+  "ignore": ["test/fixture-projects/**/*"],
+  "timeout": 10000
+}
