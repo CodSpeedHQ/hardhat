@@ -35,14 +35,6 @@ function getSolcInput(
 ): CompilerInput {
   const isViaIR = compilerOptions.optimizer?.viaIR ?? false;
 
-  const optimizerDetails = isViaIR
-    ? {
-        yulDetails: {
-          optimizerSteps: "u",
-        },
-      }
-    : undefined;
-
   const optimizer =
     compilerOptions.optimizer === undefined
       ? {
@@ -51,7 +43,6 @@ function getSolcInput(
       : {
           enabled: true,
           runs: compilerOptions.optimizer.runs,
-          details: optimizerDetails,
         };
 
   const settings: CompilerInput["settings"] = {
