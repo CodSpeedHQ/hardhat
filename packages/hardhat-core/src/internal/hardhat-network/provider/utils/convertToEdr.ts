@@ -208,24 +208,43 @@ export function edrRpcDebugTraceToHardhat(
 export function edrTracingStepToMinimalInterpreterStep(
   step: TracingStep
 ): MinimalInterpreterStep {
-  return {
+  const minimalInterpreterStep: MinimalInterpreterStep = {
     pc: Number(step.pc),
     depth: step.depth,
     opcode: {
       name: step.opcode,
     },
-    stack: step.stackTop !== undefined ? [step.stackTop] : [],
+    stack: step.stack,
   };
+
+  if (step.memory !== undefined) {
+    minimalInterpreterStep.memory = step.memory;
+  }
+
+  return minimalInterpreterStep;
 }
 
 export function edrTracingMessageResultToMinimalEVMResult(
   tracingMessageResult: TracingMessageResult
 ): MinimalEVMResult {
-  return {
+  const executionResult = tracingMessageResult.executionResult.result;
+
+  // only SuccessResult has logs
+  const success = "logs" in executionResult;
+
+  const minimalEVMResult: MinimalEVMResult = {
     execResult: {
-      executionGasUsed: tracingMessageResult.executionResult.result.gasUsed,
+      executionGasUsed: executionResult.gasUsed,
+      success,
     },
   };
+
+  // only success and exceptional halt have reason
+  if ("reason" in executionResult) {
+    minimalEVMResult.execResult.reason = executionResult.reason;
+  }
+
+  return minimalEVMResult;
 }
 
 export function edrTracingMessageToMinimalMessage(
@@ -241,5 +260,6 @@ export function edrTracingMessageToMinimalMessage(
     value: message.value,
     caller: new Address(message.caller),
     gasLimit: message.gasLimit,
+    isStaticCall: message.isStaticCall,
   };
 }

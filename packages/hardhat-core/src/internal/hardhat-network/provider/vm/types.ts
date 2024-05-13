@@ -1,3 +1,4 @@
+import type { ExceptionalHalt, SuccessReason } from "@nomicfoundation/edr";
 import type { Address } from "@nomicfoundation/ethereumjs-util";
 
 /**
@@ -12,10 +13,13 @@ export interface MinimalInterpreterStep {
     name: string;
   };
   stack: bigint[];
+  memory?: Uint8Array;
 }
 
 export interface MinimalExecResult {
+  success: boolean;
   executionGasUsed: bigint;
+  reason?: SuccessReason | ExceptionalHalt;
 }
 
 export interface MinimalEVMResult {
@@ -29,4 +33,5 @@ export interface MinimalMessage {
   data: Uint8Array;
   caller: Address;
   gasLimit: bigint;
+  isStaticCall: boolean;
 }
