@@ -1,5 +1,13 @@
 # @nomicfoundation/hardhat-verify
 
+## 2.0.8
+
+### Patch Changes
+
+- 73d5bea: Improved validation of contructor arguments (thanks @fwx5618177!)
+- Updated dependencies [6e36f3f]
+  - hardhat@2.22.5
+
 ## 2.0.7
 
 ### Patch Changes
